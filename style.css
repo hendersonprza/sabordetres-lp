@@ -1,0 +1,764 @@
+/* ===========================================
+    VARIABLES CSS - Sistema de Diseño
+   =========================================== */
+:root {
+    /* Paleta de Colores */
+    --color-primary: #f4b81c;        /* Dorado - color principal */
+    --color-primary-dark: #c89717;   /* Dorado oscuro */
+    --color-primary-light: #f1c860;  /* Dorado claro */
+    
+    --color-secondary: #2e2a25;      /* Café oscuro */
+    --color-accent: #56290f;         /* Café marrón */
+    
+    --color-dark: hsl(24, 20%, 15%); /* Texto oscuro */
+    --color-medium-gray: hsl(24, 5%, 50%);
+    --color-light-gray: hsl(24, 10%, 95%);
+    --color-white: hsl(0, 0%, 100%);
+    
+    /* Tipografía */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+    
+    --font-size-base: 1rem;      /* 16px */
+    --font-size-lg: 1.125rem;    /* 18px */
+    --font-size-xl: 1.25rem;     /* 20px */
+    --font-size-2xl: 1.5rem;     /* 24px */
+    
+    /* Espaciado */
+    --spacing-xs: 0.5rem;   /* 8px */
+    --spacing-sm: 1rem;     /* 16px */
+    --spacing-md: 1.5rem;   /* 24px */
+    --spacing-lg: 2rem;     /* 32px */
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    
+    /* Border Radius */
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    
+    /* Transiciones */
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.6s ease;
+    
+    /* Container */
+    --container-max-width: 1200px;
+    --container-padding: 1rem;  /* Móvil: 16px de padding */
+}
+
+/* ===========================================
+   PASO 2: RESET BÁSICO
+   =========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-dark);
+    background-color: var(--color-white);
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+ul {
+    list-style: none; /* Quita los bullets de las listas */
+    /* Para evitar desplazamientos insesperados */
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none; /* Quita el subrayado */
+    color: inherit;
+    transition: var(--transition-base);
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ===========================================
+   PASO 3: UTILIDAD - CONTAINER
+   =========================================== */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto; /* Centra el contenedor */
+    padding: 0 var(--container-padding);
+    width: 100%;
+}
+
+/* ===========================================
+   PASO 4: NAVBAR - MOBILE FIRST
+   =========================================== */
+
+/* Contenedor principal del navbar */
+.navbar {
+    position: fixed;        /* Fijo en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;         /* Por encima de todo */
+    background: var(--color-primary); 
+    backdrop-filter: blur(10px);  /* Efecto glassmorphism */
+    box-shadow: var(--shadow-sm);
+    transition: left var(--transition-baseç)  /* Transición suave al hacer scroll */
+}
+
+/* Container interno del navbar */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;  /* Logo izquierda, hamburguesa derecha */
+    align-items: center;
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    transition: all 0.5s ease-out;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    transition: all 0.5s ease-out;
+}
+
+/* Logo/Marca */
+.nav-brand .logo {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);  /* En móvil: más pequeño */
+    font-weight: 700;
+    background: var(--color-white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.5s ease-out;
+}
+
+.nav-brand .logo-img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+    transition: all 0.5s ease-out;
+}
+
+.nav-brand .logo-img + .logo {
+    font-size: 1rem; /* Ajusta el tamaño del texto si hay imagen */
+    transition: all 0.5s ease-out;
+}
+
+/* MENÚ DE NAVEGACIÓN - OCULTO EN MÓVIL */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;  /* Fuera de la pantalla a la derecha */
+    width: 70%;    /* Ocupa 70% del ancho en móvil */
+    height: 100vh; /* Altura completa de la pantalla */
+    background: var(--color-white);
+    
+    display: flex;
+    flex-direction: column;  /* Vertical en móvil */
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    
+    box-shadow: var(--shadow-md);
+    transition: right var(--transition-base);  /* Animación de deslizamiento */
+}
+
+/* Cuando el menú está activo (clase agregada por JavaScript) */
+.nav-menu.active {
+    right: 0;  /* Se desliza hacia adentro */
+}
+
+/* Enlaces de navegación */
+.nav-link {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--color-dark);
+    position: relative;
+    padding: var(--spacing-xs) 0;
+}
+
+/* Línea animada debajo del enlace */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width var(--transition-base);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* BOTÓN HAMBURGUESA - VISIBLE EN MÓVIL */
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1001;  /* Por encima del menú */
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--color-dark);
+    border-radius: 3px;
+    transition: var(--transition-base);
+    transform-origin: center;
+}
+
+/* Transformación del botón hamburguesa a X */
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(12px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-12px);
+}
+
+/* Efecto cuando se hace scroll */
+.navbar.scrolled {
+    background: blur(10px);
+    background: transparent;
+    box-shadow: var(--shadow-md);
+    transition: all 0.5s ease-out;
+}
+
+.navbar.scrolled .logo {
+    background: var(--color-primary-dark);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-toggle.scrolled span {
+    background: var(--color-white);
+    transition: all 0.5s ease-out;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: -100%;  /* Comienza fuera de pantalla a la izquierda */
+    width: 30%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    transition: left 2s ease-out;
+    z-index: 999;  /* Por debajo del menú pero por encima del contenido */
+}
+
+/* Cuando el overlay está activo */
+.overlay.active {
+    left: 0;  /* Se desliza hacia adentro desde la derecha */
+}
+
+/* ===========================================
+   PASO 5: BOTONES (necesarios para el Hero)
+   =========================================== */
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    text-align: center;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+}
+
+.btn-primary{
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: var(--color-white);
+    box-shadow: var(--shadow-md);
+    padding: 0.3rem 1rem;
+    border-radius: var(--radius-md);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);  /* Se eleva al hacer hover */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    font-size: var(--font-size-xl);
+}
+
+/* ===========================================
+   PASO 6: HERO SECTION - MOBILE FIRST
+   =========================================== */
+
+   .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px 0 0 0;
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background: url('./assets/hero-bg.png') no-repeat center center/cover;
+    position: relative;
+    color: var(--color-white);
+    font-family: var(--font-body);
+}
+
+/* OVERLAY - Capa oscura sobre la imagen */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        150deg, 
+        rgba(0, 0, 0, 0.6),      /* Negro 60% opacidad */
+        rgba(139, 69, 19, 0.4)   /* Café 40% opacidad */
+    );
+    
+    z-index: 1;  /* Por encima del contenido */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;  /* Por encima del overlay */
+    max-width: 90%;
+    padding: 0 var(--spacing-xs);
+}
+
+/* Subtítulo pequeño */
+.hero-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: var(--font-size-base);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-xs);
+    font-style: italic;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-xs);
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);  /* Sombra para legibilidad */
+
+}
+
+.hero-tagline {
+    font-family: var(--font-body);
+    font-weight: 200;
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-sm);
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+/* Indicador de scroll animado */
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--font-size-lg);
+    color: var(--color-white);
+    animation: bounce 2s infinite;
+    z-index: 2;
+}
+
+/* Contenedor del scroll indicator */
+
+.scroll-indicator span {
+    display: block;
+    border: 2px solid var(--color-white);
+    border-radius: 30px;
+    position: relative;
+    height: 40px;
+    width: 24px;
+    margin: 0 auto 10px auto;
+}
+/* Scroll indicator container animation */
+
+.scroll-indicator span::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--color-white);
+    border-radius: 4px;
+    animation: scrollDown 2s infinite;
+}
+
+/*Animación de scroll indicator*/
+@keyframes scrollDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0) translateX(-50%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(10px) translateX(-50%);
+    }
+
+}
+
+#about {
+    padding: 5rem 0;
+    background-color: var(--color-light-gray);
+}
+
+/* ===========================================
+   PASO 7: CLASES REUTILIZABLES DE SECCIÓN
+   =========================================== */
+
+/* Label pequeño sobre el título */
+.section-label {
+    display: inline-block;
+    font-size: 0.875rem;        /* 14px */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Título de sección */
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;            /* Móvil: 32px */
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-md);
+        text-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
+
+}
+
+/* Descripción de sección */
+.section-description {
+    font-size: var(--font-size-base);
+    color: var(--color-secondary);
+    line-height: 1.8;
+    max-width: 600px;
+}
+
+/* ===========================================
+   PASO 8: ABOUT SECTION - MOBILE FIRST
+   =========================================== */
+    .container {
+        padding: 0%;
+    }
+
+   .destaque {
+    margin: 0 auto;
+   }
+
+   .destaque-content {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr; /* 1 para móvil*/
+   }
+
+   .destaque-text h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
+
+   }
+
+
+    .destaque-text p {
+     margin-bottom: var(--spacing-md);
+    }
+
+   .destaque-img{
+    align-items: center;
+    border-radius: 16px;        /* Bordes redondeados */
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+    object-fit: cover;
+    overflow-x: hidden;
+        margin-top: var(--spacing-md);
+
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.destaque-img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+   }
+
+   
+/* ===========================================
+   PASO 9: RESPONSIVE - DESKTOP
+   =========================================== */
+
+/* Media Query: se activa en pantallas de 768px o más */
+@media (min-width: 768px) {
+    
+    /* ========== NAVBAR ========== */
+    
+    /* Menú visible horizontalmente */
+    .nav-menu {
+        position: static;       /* Ya no está fixed */
+        flex-direction: row;    /* Horizontal en lugar de vertical */
+        width: auto;            /* Ancho automático */
+        height: auto;           /* Altura automática */
+        background: transparent;
+        box-shadow: none;
+        gap: var(--spacing-lg);
+    }
+    
+    /* Ocultar botón hamburguesa en desktop */
+    .nav-toggle {
+        display: none;
+    }
+    
+    /* ========== HERO ========== */
+    
+    /* Contenido más grande en desktop */
+    .hero-content {
+        max-width: 800px;       /* Más ancho que en móvil */
+    }
+    
+    /* Título más grande en desktop */
+    .hero-title {
+        font-size: 3.5rem;      /* 56px - Mucho más grande */
+    }
+    
+    .hero-tagline {
+        font-size: var(--font-size-lg);  /* 18px */
+    }
+    
+    /* ========== ABOUT ========== */
+    
+    /* Padding mayor en desktop */
+    .destaque {
+        padding: 6rem 0;        /* Desktop: 96px arriba y abajo */
+    }
+    
+    /* 2 COLUMNAS en desktop */
+    .destaque-content {
+        grid-template-columns: 1fr 1fr;  /* 50% - 50% */
+        gap: 3rem;                       /* Más espacio entre columnas */
+    }
+    
+    /* Título más grande en desktop */
+    .section-title {
+        font-size: 2.5rem;      /* 40px en desktop */
+        
+    }
+
+
+/* ========== PRODUCTS ========== */
+
+
+
+
+}
+
+/* ===========================================
+   PASO 10: PRODUCTS SECTION - MOBILE FIRST
+   =========================================== */
+#products {
+    padding: 0;
+    background: url(./assets/bg-products.png)
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xs);
+}
+
+.section-header .section-description {
+    margin: 0 auto;             /* Centra el texto */
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 columna en móvil */
+    gap: var(--spacing-xs);
+    padding-bottom: var(--spacing-lg);
+}
+
+.product-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    padding: var(--spacing-sm);
+    transition: transform var(--transition-slow), box-shadow var(--transition-base);
+}
+
+.product-card:hover {
+    transform: translateY(-2px);  /* Se eleva al hacer hover */
+    box-shadow: var(--shadow-md);
+    scale: 1.02;
+}
+
+.product-image {
+    width: 100%;
+    height: 300px;
+    margin-bottom: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   
+    transition: transform var(--transition-base);
+}
+
+/* Efecto hover: se eleva */
+.product-card:hover {
+    transform: translateY(-1px);            /* Se eleva 8px */
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);  /* Sombra más grande */
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);                 /* Zoom suave */
+}
+
+.product-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-xs) var(--spacing-xs);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.product-info {
+    text-align: center;
+    padding-bottom: 0.5rem;
+}
+
+.product-description {
+    font-size: var(--font-size-base);
+    margin-bottom: 0.5rem;
+}
+
+.product-info .btn-secondary {
+    background: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+}
+
+/* ========== RESPONSIVE PRODUCTS ========== */
+
+@media (min-width: 768px) {
+    
+    .products {
+        padding: 6rem 0;
+    }
+
+    .section-header {
+        padding-top: 4rem;
+    }
+
+    
+     .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+
+}
+
+.footer-section {
+    align-items: center;
+}
+
+.social-links {
+    align-self: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 0.2rem;
+}
+
+.social-links a {
+    text-decoration: none;
+    display:flexbox;
+    justify-content: center;
+    align-items: center;
+    width: 5px;
+    height:5px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 2rem;
+    border-radius: 50%;
+    transition: 0.3s ease;
+    margin: 10px;
+}
+
+.social-links a:hover {
+    color: var(--color-primary);
+    box-shadow: 0 0 20px var(--color-primary);
+}
+
+/*Footer*/
+
+.footer {
+    background: var(--color-dark);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+.footer-info i{
+    margin: 0.2rem;
+}
+
+/*RESPONSIVE*/
+@media (min-width: 768px) {
+    
+    .footer-content {
+        display: flex;
+        justify-content:center;
+        align-items:flex-start;
+    }
+
+
+}

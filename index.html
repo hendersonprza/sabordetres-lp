@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Configuración de codificación de caracteres -->
+    <meta charset="UTF-8">
+    
+    <!-- Configuración responsive - CRÍTICO para mobile first -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Descripción para SEO (motores de búsqueda) -->
+    <meta name="description" content="Sabor de Tres - Padaria e Pizzaria artesanal com produtos frescos e de qualidade premium. Descubra nossos pães, pizzas e doces irresistíveis.">
+    
+    <!-- Título que aparece en la pestaña del navegador -->
+    <title>Sabor de Tres - Padaria & Pizzaria Artesanal</title>
+    
+    <!-- Enlace al archivo CSS (que crearemos después) -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Preconexión a Google Fonts para mejorar velocidad de carga -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Importación de las fuentes de Google -->
+    <!-- Playfair Display: para títulos elegantes (serif) -->
+    <!-- Inter: para texto del cuerpo (sans-serif) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+ <!-- ============================================
+         NAVBAR - Barra de navegación fija
+         ============================================ -->
+    <nav class="navbar" id="navbar">
+        <!-- Container: mantiene el contenido centrado y con padding -->
+        <div class="container">
+            
+            <!-- LOGO/MARCA - Lado izquierdo -->
+            <div class="nav-brand">
+                <img class="logo-img" src="./assets/logo.png" alt="logo">
+                <h1 class="logo">Sabor de Tres</h1>
+            </div>
+            
+            <!-- MENÚ DE NAVEGACIÓN - Los enlaces -->
+            <!-- En móvil: oculto por defecto, se muestra al hacer clic en hamburguesa -->
+            <!-- En desktop: visible siempre -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Início</a></li>
+                <li><a href="#about" class="nav-link">Destaque</a></li>
+                <li><a href="#products" class="nav-link">Produtos</a></li>
+                <li><a href="#contact" class="nav-link">Contato</a></li>
+            </ul>
+            
+            <!-- BOTÓN HAMBURGUESA - Solo visible en móvil -->
+            <!-- Las 3 líneas (spans) se animan al hacer clic -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+        </div>
+    </nav>
+
+        <!-- ============================================
+         HERO SECTION - Sección Principal
+         ============================================ -->
+    
+    <section class="hero" id="home">
+          <!-- OVERLAY - Capa oscura sobre la imagen de fondo -->
+        <!-- Hace que el texto blanco sea legible -->
+        
+    <div class="hero-overlay"></div>  <!-- ← Capa oscura    -->
+
+
+
+     <!-- CONTENIDO PRINCIPAL - Centrado vertical y horizontalmente -->
+
+     <!--   ← Contenido central -->
+    <div class="hero-content">
+    <!-- Subtítulo pequeño (eyebrow) -->
+    <h2 class="hero-eyebrow">Padaria & Pizzaria Artesanal</p>  <!-- ← Eyebrow    -->
+    <!-- Título principal -->
+    <h1 class="hero-title">Sabor de Tres</h1>  <!-- ← Título principal    -->
+    <!-- Lema o frase -->
+        <p class="hero-tagline">Descubra o sabor das nossas massas e doces feitas com paixão e com sabor de casa!</p>  <!-- ← Lema    -->
+    <!-- Botón de llamada a la acción -->
+    <a href="#products" class="btn-primary">Veja nossas delícias</a>  <!-- ← Botón CTA    -->
+
+    </div> 
+
+
+<!--   ← Indicador de scroll -->
+    <div class="scroll-indicator">
+        <span></span>
+
+
+    </div> 
+</section>
+ 
+    <!-- ============================================
+         ABOUT SECTION - Sobre Nosotros
+         ============================================ -->
+
+         <section class="destaque" id="about">
+            <div class="container">
+                <!-- CONTENEDOR PRINCIPAL - En desktop será 2 columnas -->
+                <div class="destaque-content">
+
+                     <!-- LADO IZQUIERDO: Texto e Información -->
+                    <div class="destaque-text">
+                        <h2 class="section-label">Destaque do Mês</h2>
+                        <p class="section-title">Pan de Jamón de 1kg</p>
+                        <p class="section-description">Pão Artesanal levemente doce e macio, recheado com <em>Presunto, Bacon, Azeitonas e Passas.</em> Tradição venezuelana que vai dominar seu Natal e qualquer ocasião!</p>
+                        <a class="btn-primary" id="whatsapp-link">Peça agora</a>
+                </div>
+                <div class="destaque-img">
+                    <img src="./assets/destaque.jpg" alt="destaque do mês">
+                </div>
+            </div>
+
+         </section>
+
+         <section class="products" id="products"> 
+            <div class="container">
+
+                 <!-- HEADER DE SECCIÓN - Centrado -->
+            <div class="section-header">
+                <span class="section-label">Nossos Produtos</span>
+                <h2 class="section-title">Delícias Artesanais</h2>
+                <p class="section-description">
+                    Conheça nossas variedades que vão acordar seu paladar!
+                </p>
+
+            </div>
+
+                 <!-- CONTENEDOR DE PRODUCTOS - Grid responsive -->
+            <div class="products-grid">
+                <!-- Producto individual -->
+                <!-- PRODUCTO 1 - Pães Artesanais -->
+                <div class="product-card">
+                    <!-- Imagen del producto -->
+                    <div class="product-image">
+                        <img src="./assets/monte_do_seu_jeito.png" 
+                             alt="Monte do seu jeito">
+                        <!-- Overlay con tag -->
+                        <div class="product-overlay">
+                            <span class="product-tag">RECOMENDADO</span>
+                        </div>
+                    </div>
+                    <!-- Información del producto -->
+                    <div class="product-info">
+                        <h3 class="product-name">Monte do seu jeito!</h3>
+                        <p class="product-description">
+                            Não achou o que queria? Monte seu pão ou pizza do jeito que preferir!
+                        </p>
+                        <button class="btn btn-secondary"><a class="btn-whatsapp">Saber Mais</a></button>
+                    </div>
+                </div>
+
+                 <!-- PRODUCTO 2 - Pães Artesanais -->
+                <div class="product-card">
+                    <!-- Imagen del producto -->
+                    <div class="product-image">
+                        <img src="./assets/product-paes.jpg" 
+                             alt="Pães Artesanais">
+                        <!-- Overlay con tag -->
+                        <div class="product-overlay">
+                            <span class="product-tag">Destaque</span>
+                        </div>
+                    </div>
+                    <!-- Información del producto -->
+                    <div class="product-info">
+                        <h3 class="product-name">Pães Artesanais</h3>
+                        <p class="product-description">
+                            Pães assados diariamente de diferentes tipos e sabores.
+                        </p>
+                        <button class="btn btn-secondary"><a href="./assets/cardapio.pdf" target="_blank">Ver Cardápio</a></button>
+                    </div>
+                </div>
+
+                 <!-- PRODUCTO 3 - Pizzas Artesanais -->
+                <div class="product-card">
+                    <!-- Imagen del producto -->
+                    <div class="product-image">
+                        <img src="./assets/product-pizza.jpg" 
+                             alt="Pizzas Artesanais">
+                    </div>
+                    <!-- Información del producto -->
+                    <div class="product-info">
+                        <h3 class="product-name">Pizzas Artesanais</h3>
+                        <p class="product-description">
+                            Pizzas personalizadas feitas com bastante capricho!
+                        </p>
+                        <button class="btn btn-secondary"><a href="./assets/pizzas-cardapio.pdf" target="_blank">Ver Cardápio</a></button>
+                    </div>
+                </div>
+
+                 <!-- PRODUCTO 4 - Golfeados -->
+                <div class="product-card">
+                    <!-- Imagen del producto -->
+                    <div class="product-image">
+                        <img src="./assets/golfeados-product.png" 
+                             alt="Golfeados">
+                    
+                
+                    </div>
+                    <!-- Información del producto -->
+                    <div class="product-info">
+                        <h3 class="product-name">Golfeados venezuelanos</h3>
+                        <p class="product-description">
+                            Doce típico feito de rapadura e queijo branco venezuelano.
+                        </p>
+                        <button class="btn btn-secondary "><a class="btn-whatsapp">Saber Mais</a></button>
+                    </div>
+                </div>
+
+
+            </div>
+            </div>
+
+         </section>
+
+            <!-- ============================================
+         FOOTER - Pie de Página
+         ============================================ -->
+
+         <footer class="footer" id="contact">
+            <div class="container">
+                <div class="footer-content">
+                    <!-- COLUMNA 1 - Sobre la empresa -->
+                     <div class="footer-section">
+                        <h3 class="footer-title">Sabor de Tres</h3>
+                        <p class="footer-description">Padaria e Pizzaria Artesanal, feita com amor para você e sua família.</p>
+
+                                            <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+
+                     </div>
+                
+            
+                
+                
+                <!-- COLUMNA 4 - Contacto -->
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Contato</h4>
+                    <ul class="footer-info">
+                        <li><i class="bi bi-map"></i>Rua Tesoureiro, 2094 - Capela Velha, Araucária - PR</li>
+                        <li><i class="bi bi-whatsapp"></i>(41) 98770-0034</li>
+                    </ul>
+                </div>
+                
+            
+            
+            <!-- FOOTER BOTTOM - Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sabor de Tres. Todos os direitos reservados.</p>
+            </div>
+            
+        </div>
+        </div>
+        </div>
+        </div>
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    
+</body>
+
+</html>
